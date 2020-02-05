@@ -54,8 +54,11 @@ export class MeasurementLineComponent implements OnInit, OnChanges {
                     this.lineChartData[0].data.push(value.value);
                     this.lineChartLabels.push((new Date(value.timestamp)).toLocaleDateString());
                 });
-                this.values = values;
-                console.log(this.values);
+                if (values.length > 0) {
+                    this.values = values;
+                } else {
+                    this.values = null;
+                }
             });
         }
     }

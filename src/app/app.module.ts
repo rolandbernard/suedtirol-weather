@@ -10,6 +10,7 @@ import { MatTableModule } from "@angular/material/table";
 
 import { WeatherOverviewComponent } from "./weather-overview/weather-overview.component";
 import { OpenlayersMapComponent } from "./openlayers-map/openlayers-map.component";
+import { MeasurementLineComponent } from "./measurement-line/measurement-line.component";
 import { StationSummaryComponent } from "./station-summary/station-summary.component";
 import { WeatherService } from "./shared/weather-service";
 
@@ -18,6 +19,7 @@ import { WeatherService } from "./shared/weather-service";
         AppComponent,
         WeatherOverviewComponent,
         OpenlayersMapComponent,
+        MeasurementLineComponent,
         StationSummaryComponent,
     ],
     imports: [
