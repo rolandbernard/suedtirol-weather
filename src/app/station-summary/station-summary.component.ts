@@ -22,6 +22,7 @@ export class StationSummaryComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges() {
+        this.displayedMeasurement = null;
         this.getCurrentMeasurements();
     }
 

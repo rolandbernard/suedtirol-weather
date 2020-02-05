@@ -4,12 +4,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ChartsModule } from "ng2-charts";
 
 import { MatTableModule } from "@angular/material/table";
 
 import { WeatherOverviewComponent } from "./weather-overview/weather-overview.component";
 import { OpenlayersMapComponent } from "./openlayers-map/openlayers-map.component";
-import { MeasurementChartComponent } from "./measurement-chart/measurement-chart.component";
 import { StationSummaryComponent } from "./station-summary/station-summary.component";
 import { WeatherService } from "./shared/weather-service";
 
@@ -18,7 +18,6 @@ import { WeatherService } from "./shared/weather-service";
         AppComponent,
         WeatherOverviewComponent,
         OpenlayersMapComponent,
-        MeasurementChartComponent,
         StationSummaryComponent,
     ],
     imports: [
@@ -27,6 +26,7 @@ import { WeatherService } from "./shared/weather-service";
         BrowserAnimationsModule,
         HttpClientModule,
         MatTableModule,
+        ChartsModule,
     ],
     providers: [ WeatherService ],
     bootstrap: [ AppComponent ]

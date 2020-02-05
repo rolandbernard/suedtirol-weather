@@ -14,4 +14,4 @@
 
     <tr mat-row *matRowDef="let row; columns: ['name', 'value', 'unit'];" (click)="handleTableClick($event, row)"></tr>
 </table>
-<sw-measurement-chart [station]="station" [measurement]="displayedMeasurement"></sw-measurement-chart>
+<sw-measurement-line [station]="station" [measurement]="displayedMeasurement"></sw-measurement-line>
