@@ -2,23 +2,6 @@
 <div id="mapdiv"></div>
 <div id="popup" class="ol-popup">
     <div id="popup-content">
-        <div class="station-name">{{ currentStation.name }}</div>
-
-        <table mat-table [dataSource]="currentMeasurments">
-                <ng-container matColumnDef="name">
-                    <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="value">
-                    <td mat-cell *matCellDef="let element"> {{ element.value }} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="unit">
-                    <td mat-cell *matCellDef="let element"> {{ element.unit }} </td>
-                </ng-container>
-
-                <tr mat-row *matRowDef="let row; columns: ['name', 'value', 'unit'];"></tr>
-        </table>
-
+        <sw-station-summary [station]="displayedStation"></sw-station-summary>
     </div>
 </div>

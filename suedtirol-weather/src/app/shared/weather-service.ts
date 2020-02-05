@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Station } from "./station";
-import { Measurment } from "./measurment";
+import { Measurement, Value } from "./measurement";
 
 @Injectable()
 export class WeatherService {
@@ -13,14 +13,24 @@ export class WeatherService {
         return this.http.get<Station[]>("http://ipchannels.integreen-life.bz.it/meteorology/rest/get-station-details").toPromise();
     }
 
-    async getMeasurmentsForStation(station: Station): Promise<Measurment[]> {
-        const dataTypes = await this.http.get<string[][]>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-data-types?station=${station.id}`).toPromise();
-        return await Promise.all(dataTypes.map(async (dataType) => {
-            let measurment = new Measurment();
-            measurment.unit = dataType[1];
-            measurment.name = dataType[2];
-            measurment.value = (await this.http.get<any>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-newest-record?station=${station.id}&type=${dataType[0]}`).toPromise()).value;
-                return measurment;
-        }));
+    async getMeasurmentsForStation(station: Station): Promise<Measurement[]> {
+        if(station) {
+            console.log(station);
+            const dataTypes = await this.http.get<string[][]>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-data-types?station=${ station.id }`).toPromise();
+                return await Promise.all(dataTypes.map(async (dataType) => {
+                let measurment = new Measurement();
+                measurment.id = dataType[0];
+                measurment.unit = dataType[1];
+                measurment.name = dataType[2] || dataType[0];
+                measurment.value = (await this.http.get<any>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-newest-record?station=${ station.id }&type=${ dataType[0] }`).toPromise()).value;
+                    return measurment;
+            }));
+        } else {
+            return [];
+        }
+    }
+
+    getMeasurmentsValuesForStation(station: Station, measurment: Measurement, period: number): Promise<Value[]> {
+        return this.http.get<Value[]>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-records?station=${ station.id }&name=${ measurment.id }&seconds=${ period }`).toPromise();
     }
 }

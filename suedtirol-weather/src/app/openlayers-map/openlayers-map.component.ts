@@ -9,7 +9,6 @@ import { Style, Icon } from "ol/style";
 
 import { WeatherService } from "../shared/weather-service";
 import { Station } from "../shared/station";
-import { Measurment } from "../shared/measurment";
 
 const styles = {
     "station": new Style({
@@ -26,10 +25,9 @@ const styles = {
     styleUrls: ["./openlayers-map.component.scss"]
 })
 export class OpenlayersMapComponent implements OnInit {
-    map: Map;
-    stations: Station[];
-    currentStation: Station;
-    currentMeasurments: Measurment[];
+    map: Map = null;
+    stations: Station[] = [];
+    displayedStation: Station = null;
 
     constructor(private weatherService: WeatherService) { }
 
@@ -57,21 +55,20 @@ export class OpenlayersMapComponent implements OnInit {
         });
         this.map.on("singleclick", (event) => {
             const features = this.map.getFeaturesAtPixel(event.pixel);
-            console.log(features);
             if(features.length > 0) {
                 popupOverlay.setPosition(event.coordinate);
                 const station = this.stations[features[0].getId()];
-                this.currentStation = station;
-                this.weatherService.getMeasurmentsForStation(station).then((measurments) => {
-                    this.currentMeasurments = measurments;
-                });
+                this.displayedStation = station;
             } else {
                 popupOverlay.setPosition(undefined);
             }
         });
         this.map.on('pointermove', (event) => {
             const features = this.map.getFeaturesAtPixel(event.pixel);
-            this.map.getTarget().style.cursor = features.length > 0 ? 'pointer' : '';
+            const target = this.map.getTarget();
+            if(target instanceof HTMLElement) {
+                target.style.cursor = features.length > 0 ? 'pointer' : '';
+            }
         });
 
         this.weatherService.getAllStations().then((stations) => {
@@ -97,5 +94,4 @@ export class OpenlayersMapComponent implements OnInit {
             this.map.addLayer(vectorLayer);
         });
     }
-
 }
