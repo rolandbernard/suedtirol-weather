@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
-import { ChartDataSets, ChartOptions, ChartType } from "chart.js";
+import { ChartDataSets, ChartOptions, ChartType, ChartPoint } from "chart.js";
 import { Color, Label } from "ng2-charts";
 
 import { WeatherService } from "../shared/weather-service";
@@ -15,9 +15,16 @@ export class MeasurementLineComponent implements OnInit, OnChanges {
     lineChartData: ChartDataSets[] = [
         { data: [ ], label: "" },
     ];
-    lineChartLabels: Label[] = [ ];
     lineChartOptions: ChartOptions = {
         responsive: true,
+        scales: {
+            xAxes: [{
+                type: 'time',
+                time: {
+                    unit: 'day'
+                }
+            }]
+        }
     };
     lineChartColors: Color[] = [
         {
@@ -48,11 +55,10 @@ export class MeasurementLineComponent implements OnInit, OnChanges {
         if(this.station && this.measurement) {
             this.values = [ ];
             this.lineChartData[0].data = [ ];
-            this.lineChartLabels = [ ];
             this.weatherService.getMeasurmentsValuesForStation(this.station, this.measurement, 60*60*24*7).then((values) => {
                 values.forEach((value) => {
-                    this.lineChartData[0].data.push(value.value);
-                    this.lineChartLabels.push((new Date(value.timestamp)).toLocaleDateString());
+                    const point: ChartPoint = {y: value.value, t: new Date(value.timestamp)};
+                    this.lineChartData[0].data.push(point);
                 });
                 if (values.length > 0) {
                     this.values = values;
