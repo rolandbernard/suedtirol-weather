@@ -15,15 +15,17 @@ export class WeatherService {
 
     async getMeasurmentsForStation(station: Station): Promise<Measurement[]> {
         if(station) {
-            console.log(station);
             const dataTypes = await this.http.get<string[][]>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-data-types?station=${ station.id }`).toPromise();
-                return await Promise.all(dataTypes.map(async (dataType) => {
+            return await Promise.all(dataTypes.map(async (dataType) => {
                 let measurment = new Measurement();
                 measurment.id = dataType[0];
                 measurment.unit = dataType[1];
                 measurment.name = dataType[2] || dataType[0];
-                measurment.value = (await this.http.get<any>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-newest-record?station=${ station.id }&type=${ dataType[0] }`).toPromise()).value;
-                    return measurment;
+                const value = await this.http.get<any>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-newest-record?station=${ station.id }&type=${ dataType[0] }`).toPromise();
+                if(value !== null) {
+                    measurment.value = value.value;
+                }
+                return measurment;
             }));
         } else {
             return [];
