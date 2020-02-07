@@ -14,7 +14,7 @@ const styles = {
     "station": new Style({
         image: new Icon({
             anchor: [0.5, 0.5],
-            src: "assets/icons/marker.svg"
+            src: "assets/marker.svg"
         })
     })
 };
