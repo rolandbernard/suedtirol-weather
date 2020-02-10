@@ -16,7 +16,6 @@ export class WeatherOverviewComponent implements OnInit {
     ngOnInit() {
         this.weatherService.getWeather().then((weather) => {
             this.weather = weather;
-            console.log(this.weather);
         });
     }
 

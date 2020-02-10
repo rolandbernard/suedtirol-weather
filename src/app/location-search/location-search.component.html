@@ -1,0 +1,8 @@
+<mat-form-field style="font-size: 75%; top: 0.5em;">
+    <mat-label>Search Location</mat-label>
+    <input type="text" #input matInput [matAutocomplete]='auto' (keyup)="handleKeyEvent(input.value)">
+    <mat-icon matSuffix>search</mat-icon>
+</mat-form-field>
+<mat-autocomplete #auto='matAutocomplete' (optionSelected)='handleSelectedLocation($event.option.value, input)'>
+    <mat-option *ngFor='let loc of foundLocations' [value]='loc'>{{ loc.name }}</mat-option>
+</mat-autocomplete>

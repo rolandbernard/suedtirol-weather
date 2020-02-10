@@ -12,3 +12,9 @@ export class Weather {
     brunico: Forecast;
 }
 
+export class LocationWeather {
+    forecast: Forecast[];
+    today: Forecast;
+    name: string;
+}
+

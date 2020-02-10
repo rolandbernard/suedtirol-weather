@@ -20,6 +20,9 @@
             <button mat-menu-item routerLink="/stations">Stations</button>
             <button mat-menu-item routerLink="/about">About</button>
         </mat-menu>
+
+        <span class="spacer"></span>
+        <sw-location-search (locationSelected)="openLocationWeather($event)"></sw-location-search>
     </mat-toolbar>
     <div fxFlex="1 1 100%">
         <router-outlet></router-outlet>

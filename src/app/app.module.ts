@@ -14,6 +14,9 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
+import { MatInputModule } from "@angular/material/input";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
 
 import { WeatherOverviewComponent } from "./weather-overview/weather-overview.component";
 import { OpenlayersMapComponent } from "./openlayers-map/openlayers-map.component";
@@ -23,6 +26,9 @@ import { ForecastComponent } from "./forecast/forecast.component";
 import { StationWeatherService } from "./shared/station-weather-service";
 import { LocationsService } from "./shared/locations-service";
 import { ForecastWeatherService } from "./shared/forecast-weather-service";
+import { LocationSearchComponent } from './location-search/location-search.component';
+import { LocationWeatherComponent } from './location-weather/location-weather.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +38,9 @@ import { ForecastWeatherService } from "./shared/forecast-weather-service";
         MeasurementLineComponent,
         StationSummaryComponent,
         ForecastComponent,
+        LocationSearchComponent,
+        LocationWeatherComponent,
+        AboutComponent,
     ],
     imports: [
         BrowserModule,
@@ -47,6 +56,9 @@ import { ForecastWeatherService } from "./shared/forecast-weather-service";
         FlexLayoutModule,
         MatButtonModule,
         MatCardModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
     ],
     providers: [ 
         StationWeatherService,

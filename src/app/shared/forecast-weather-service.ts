@@ -2,13 +2,13 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 import { Forecast, toWeatherCode, toImageURL } from "./forecast";
-import { Weather } from "./weather";
+import { Weather, LocationWeather } from "./weather";
 
 function toForecast(rawForecast: any): Forecast {
     const forecast: Forecast = new Forecast();
     if (rawForecast.MinTemp != null) {
         forecast.date = new Date(rawForecast.date);
-        forecast.maxTemp = rawForecast.Maxtemp;
+        forecast.maxTemp = rawForecast.MaxTemp == null ? rawForecast.Maxtemp : rawForecast.MaxTemp;
         forecast.minTemp = rawForecast.MinTemp;
         forecast.weatherDesc = rawForecast.WeatherDesc;
         forecast.weatherCode = toWeatherCode(rawForecast.WeatherCode);
@@ -46,4 +46,12 @@ export class ForecastWeatherService {
         return weather;
     }
 
+    async getWeatherForLocation(id: string): Promise<LocationWeather> {
+        const rawWeather: any = await this.http.get<any>(`https://tourism.opendatahub.bz.it/api/Weather/District?locfilter=${id}&language=en`).toPromise();
+        const weather: LocationWeather = new LocationWeather();
+        weather.forecast = rawWeather.BezirksForecast.slice(1).map((rawForecast) => toForecast(rawForecast));
+        weather.today = toForecast(rawWeather.BezirksForecast[0]);
+        weather.name = rawWeather.DistrictName;
+        return weather;
+    }
 }

@@ -1,0 +1,22 @@
+<div id="root" fxLayout="column">
+    <div fxFlex>
+        <div id="today">
+            <h1>{{ weather?.name }}</h1>
+            <img [src]="weather?.today.imageURL">
+            <div id="minmax">
+                <div>Min: {{ weather?.today.minTemp }} °C</div>
+                <div>Max: {{ weather?.today.maxTemp }} °C</div>
+            </div>
+        </div>
+    </div>
+    <div fxFlex="0 0 0">
+        <div id="forecasts" fxLayout="row wrap">
+            <div fxFlex *ngFor="let day of weather?.forecast">
+                <div>{{ day.date.toLocaleDateString() }}</div>
+                <div>
+                    <sw-forecast [forecast]="day"></sw-forecast>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
