@@ -13,12 +13,16 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
 
 import { WeatherOverviewComponent } from "./weather-overview/weather-overview.component";
 import { OpenlayersMapComponent } from "./openlayers-map/openlayers-map.component";
 import { MeasurementLineComponent } from "./measurement-line/measurement-line.component";
 import { StationSummaryComponent } from "./station-summary/station-summary.component";
-import { WeatherService } from "./shared/weather-service";
+import { ForecastComponent } from "./forecast/forecast.component";
+import { StationWeatherService } from "./shared/station-weather-service";
+import { LocationsService } from "./shared/locations-service";
+import { ForecastWeatherService } from "./shared/forecast-weather-service";
 
 @NgModule({
     declarations: [
@@ -27,6 +31,7 @@ import { WeatherService } from "./shared/weather-service";
         OpenlayersMapComponent,
         MeasurementLineComponent,
         StationSummaryComponent,
+        ForecastComponent,
     ],
     imports: [
         BrowserModule,
@@ -41,8 +46,13 @@ import { WeatherService } from "./shared/weather-service";
         MatIconModule,
         FlexLayoutModule,
         MatButtonModule,
+        MatCardModule,
     ],
-    providers: [ WeatherService ],
+    providers: [ 
+        StationWeatherService,
+        LocationsService,
+        ForecastWeatherService,
+    ],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

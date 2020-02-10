@@ -1,0 +1,11 @@
+<div id="root" *ngIf="forecast">
+    <div>
+        <img mat-card-avatar [src]="forecast?.imageURL">
+        <!-- <mat-card-title *ngIf="forecast?.name">{{ forecast?.name }}</mat-card-title> -->
+        <span id="desc" fxHide.lt-md>{{ forecast?.weatherDesc }}</span>
+    </div>
+    <div id="minmax" fxLayout.lt-md="column" fxLayout.gt-sm="row">
+        <span fxFlex>Min: {{ forecast?.minTemp }} °C</span>
+        <span fxFlex>Max: {{ forecast?.maxTemp }} °C</span>
+    </div>
+</div>

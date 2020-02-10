@@ -1,2 +1,35 @@
-<p *ngFor="let loc of locations">{{ loc.name }}</p>
-
+<div id="root" fxLayout="column">
+    <div fxFlex>
+        <div class="imgwrap">
+            <img src="/assets/suedtirol.svg">
+            <div id="bolzano" class="forecast">
+                <sw-forecast [forecast]="weather?.bolzano"></sw-forecast>
+            </div>
+            <div id="merano" class="forecast">
+                <sw-forecast [forecast]="weather?.merano"></sw-forecast>
+            </div>
+            <div id="bressanone" class="forecast">
+                <sw-forecast [forecast]="weather?.bressanone"></sw-forecast>
+            </div>
+            <div id="brunico" class="forecast">
+                <sw-forecast [forecast]="weather?.brunico"></sw-forecast>
+            </div>
+            <div id="vipiteno" class="forecast">
+                <sw-forecast [forecast]="weather?.vipiteno"></sw-forecast>
+            </div>
+            <div id="silandro" class="forecast">
+                <sw-forecast [forecast]="weather?.silandro"></sw-forecast>
+            </div>
+        </div>
+    </div>
+    <div fxFlex>
+        <div id="forecasts" fxLayout="row wrap">
+            <div fxFlex *ngFor="let day of weather?.forecast">
+                <div>{{ day.date.toLocaleDateString() }}</div>
+                <div>
+                    <sw-forecast [forecast]="day"></sw-forecast>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

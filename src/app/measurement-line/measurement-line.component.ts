@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, OnChanges } from "@angular/core";
 import { ChartDataSets, ChartOptions, ChartType, ChartPoint } from "chart.js";
-import { Color, Label } from "ng2-charts";
+import { Color } from "ng2-charts";
 
-import { WeatherService } from "../shared/weather-service";
+import { StationWeatherService } from "../shared/station-weather-service";
 import { Station } from "../shared/station";
 import { Measurement, Value } from "../shared/measurement";
 
@@ -40,7 +40,7 @@ export class MeasurementLineComponent implements OnInit, OnChanges {
     @Input() measurement: Measurement;
     values: Value[] = null;
 
-    constructor(private weatherService: WeatherService) { }
+    constructor(private weatherService: StationWeatherService) { }
 
     ngOnInit() {
         this.getMeasurementValues();
@@ -56,10 +56,11 @@ export class MeasurementLineComponent implements OnInit, OnChanges {
             this.values = [ ];
             this.lineChartData[0].data = [ ];
             this.weatherService.getMeasurmentsValuesForStation(this.station, this.measurement, 60*60*24*7).then((values) => {
-                values.forEach((value) => {
+                this.lineChartData[0].data = values.map((value) => {
                     const point: ChartPoint = {y: value.value, t: new Date(value.timestamp)};
-                    this.lineChartData[0].data.push(point);
+                    return point as (number & ChartPoint);
                 });
+                this.lineChartData[0].label = this.measurement.name;
                 if (values.length > 0) {
                     this.values = values;
                 } else {

@@ -7,7 +7,7 @@ import { fromLonLat } from "ol/proj";
 import { Point } from "ol/geom";
 import { Style, Icon } from "ol/style";
 
-import { WeatherService } from "../shared/weather-service";
+import { StationWeatherService } from "../shared/station-weather-service";
 import { Station } from "../shared/station";
 
 const styles = {
@@ -29,7 +29,7 @@ export class OpenlayersMapComponent implements OnInit {
     stations: Station[] = [];
     displayedStation: Station = null;
 
-    constructor(private weatherService: WeatherService) { }
+    constructor(private weatherService: StationWeatherService) { }
 
     ngOnInit() {
         const popupOverlay = new Overlay({

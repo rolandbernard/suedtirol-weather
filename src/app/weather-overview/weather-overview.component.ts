@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
-import { WeatherService } from "../shared/weather-service";
+import { ForecastWeatherService } from "../shared/forecast-weather-service";
+import { Weather } from "../shared/weather";
 
 @Component({
     selector: "sw-weather-overview",
@@ -8,10 +9,15 @@ import { WeatherService } from "../shared/weather-service";
     styleUrls: ["./weather-overview.component.scss"]
 })
 export class WeatherOverviewComponent implements OnInit {
+    weather: Weather;
 
-    constructor(private service: WeatherService) { }
+    constructor(private weatherService: ForecastWeatherService) { }
 
     ngOnInit() {
+        this.weatherService.getWeather().then((weather) => {
+            this.weather = weather;
+            console.log(this.weather);
+        });
     }
 
 }

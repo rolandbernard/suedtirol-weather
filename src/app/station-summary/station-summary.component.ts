@@ -2,7 +2,7 @@ import { Component, OnInit, OnChanges, Input } from "@angular/core";
 
 import { Station } from "../shared/station";
 import { Measurement } from "../shared/measurement";
-import { WeatherService } from "../shared/weather-service";
+import { StationWeatherService } from "../shared/station-weather-service";
 
 @Component({
     selector: "sw-station-summary",
@@ -15,7 +15,7 @@ export class StationSummaryComponent implements OnInit, OnChanges {
 
     displayedMeasurement: Measurement;
 
-    constructor(private weatherService: WeatherService) { }
+    constructor(private weatherService: StationWeatherService) { }
 
     ngOnInit() {
         this.getCurrentMeasurements();
