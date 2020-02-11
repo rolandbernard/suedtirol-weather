@@ -6,7 +6,7 @@
             <span id="temp" *ngIf="weather?.currentTemperature != null">{{ weather?.currentTemperature }} °C</span>
             <img [src]="weather?.today.imageURL" *ngIf="weather?.today.imageURL">
             <div id="minmax">
-                <div>{{ weather?.today.weatherDesc }}</div>
+                <div fxHide.lt-md>{{ weather?.today.weatherDesc }}</div>
                 <div>Min: {{ weather?.today.minTemp }} °C</div>
                 <div>Max: {{ weather?.today.maxTemp }} °C</div>
             </div>
