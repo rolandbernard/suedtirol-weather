@@ -13,6 +13,10 @@ export class StationWeatherService {
         return this.http.get<Station[]>("http://ipchannels.integreen-life.bz.it/meteorology/rest/get-station-details").toPromise();
     }
 
+    async getStationById(id: string): Promise<Station> {
+        return (await this.getAllStations()).find((station) => station.id === id);
+    }
+
     async getMeasurmentsForStation(station: Station): Promise<Measurement[]> {
         if(station) {
             const dataTypes = await this.http.get<string[][]>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-data-types?station=${ station.id }`).toPromise();

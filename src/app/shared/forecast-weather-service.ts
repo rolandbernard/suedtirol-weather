@@ -2,7 +2,11 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 
 import { Forecast, toWeatherCode, toImageURL } from "./forecast";
-import { Weather, LocationWeather } from "./weather";
+import { Weather } from "./weather";
+import { Location } from "./location";
+import { LocationWeather } from "./location-weather";
+import { LocationsService } from "./locations-service";
+import { StationWeatherService } from "./station-weather-service";
 
 function toForecast(rawForecast: any): Forecast {
     const forecast: Forecast = new Forecast();
@@ -29,9 +33,9 @@ function toForecast(rawForecast: any): Forecast {
 }
 
 @Injectable()
-export class ForecastWeatherService {
+export class LocationWeatherService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private weatherService: StationWeatherService, private locationsService: LocationsService) { }
 
     async getWeather(): Promise<Weather> {
         const rawWeather: any = await this.http.get<any>("https://tourism.opendatahub.bz.it/api/Weather?language=en").toPromise();
@@ -46,12 +50,18 @@ export class ForecastWeatherService {
         return weather;
     }
 
-    async getWeatherForLocation(id: string): Promise<LocationWeather> {
-        const rawWeather: any = await this.http.get<any>(`https://tourism.opendatahub.bz.it/api/Weather/District?locfilter=${id}&language=en`).toPromise();
-        const weather: LocationWeather = new LocationWeather();
+    async getWeatherForLocation(location: Location): Promise<LocationWeather> {
+        const rawWeather: any = await this.http.get<any>(`https://tourism.opendatahub.bz.it/api/Weather/District?locfilter=${location.id}&language=en`).toPromise();
+            const weather: LocationWeather = new LocationWeather();
+        weather.districtId = rawWeather.Id;
         weather.forecast = rawWeather.BezirksForecast.slice(1).map((rawForecast) => toForecast(rawForecast));
         weather.today = toForecast(rawWeather.BezirksForecast[0]);
         weather.name = rawWeather.DistrictName;
+        const station = await this.weatherService.getStationById(this.locationsService.getStationIdForLocation(location));
+        if (station) {
+            weather.currentTemperature = (await this.weatherService.getMeasurmentsForStation(station))
+                .find((measurment) => measurment.id.toLowerCase().includes("temperature")).value;
+        }
         return weather;
     }
 }

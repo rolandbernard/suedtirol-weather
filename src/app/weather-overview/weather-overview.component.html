@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-    <div fxFlex>
+    <div fxFlex="0 0 auto">
         <div id="forecasts" fxLayout="row wrap">
             <div fxFlex *ngFor="let day of weather?.forecast">
                 <div>{{ day.date.toLocaleDateString() }}</div>

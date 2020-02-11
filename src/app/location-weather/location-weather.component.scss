@@ -1,24 +1,48 @@
 h1 {
     display: block;
+    margin-top: 0;
 }
 
 #today {
     margin: auto;
-    padding: 2em;
+    padding: 2%;
     font-size: 1.5em;
-    height: fit-content;
-    width: fit-content;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    color: white;
+}
+
+#background {
+    filter: blur(10px);
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 img {
     display: inline-block;
     width: 40vw;
-    max-width: 50vh;
+    max-width: 20vh;
     vertical-align: middle;
 }
 
-h1 {
-    font-size: 4vw;
+h1.sm {
+    font-size: 7vw;
+}
+
+h1.lg {
+    font-size: 2em;
+}
+
+#temp {
+    float: right;
+    font-size: 1.5em;
 }
 
 #minmax {
@@ -38,10 +62,8 @@ div {
 }
 
 #forecasts {
-    position: absolute;
     padding: 2em;
     background: white;
-    bottom: 0;
     box-shadow: lightgray 1px -1px 5px;
     width: 100%;
 }

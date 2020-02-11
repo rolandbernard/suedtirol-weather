@@ -23,14 +23,14 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1916"
+     inkscape:window-width="956"
      inkscape:window-height="1037"
      id="namedview877"
      showgrid="false"
      inkscape:zoom="0.83692718"
-     inkscape:cx="317.90932"
+     inkscape:cx="115.98016"
      inkscape:cy="343.93159"
-     inkscape:window-x="0"
+     inkscape:window-x="960"
      inkscape:window-y="41"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg8"
@@ -45,12 +45,12 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <path
-     style="fill:#dadada;fill-opacity:1;stroke:none;stroke-width:0.26458335px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     style="fill:#cbcbcb;fill-opacity:1;stroke:none;stroke-width:0.26458335px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
      d="m 11.68342,51.744143 -10.4325074,39.517081 8.219551,4.425913 v 0 L 8.2059182,116.86829 v 0 l 23.7102468,11.38092 16.122968,-8.21955 5.69046,11.38092 8.851824,-4.42591 v 0 l 8.851826,0.63227 6.638869,-8.85183 5.69046,9.80024 5.058186,-2.52909 -6.006595,-12.64547 4.109775,0.63227 10.432507,6.63887 6.954995,1.89682 -8.851813,35.72344 5.058173,4.42592 2.21295,6.955 16.43911,-9.4841 12.64546,-0.94841 8.53569,-15.17456 17.07138,-7.58728 5.69046,-20.86501 42.04617,-9.4841 8.21956,-21.813433 19.28433,11.697054 30.3491,-18.968196 -23.3941,-19.284334 1.58069,-16.122968 -19.28434,-7.903417 v 0 l -1.58068,-16.439105 8.53569,-4.109776 1.58068,-11.3809195 -61.96278,21.8134285 -19.91661,-5.374323 -4.10977,4.109776 -11.69706,-5.374323 -4.74205,10.43251 -8.85182,-5.69046 -23.077958,5.058186 -2.529094,7.271141 -7.903416,2.529094 -3.793639,16.439105 2.529092,2.212957 -6.955005,8.219551 -31.929801,-2.212956 3.793641,-5.690458 -14.542286,-9.167963 -8.851826,1.580684 -4.742049,6.006595 z"
      id="path1550"
      inkscape:connector-curvature="0" />

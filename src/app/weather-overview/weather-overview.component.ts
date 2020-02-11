@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { ForecastWeatherService } from "../shared/forecast-weather-service";
+import { LocationWeatherService } from "../shared/forecast-weather-service";
 import { Weather } from "../shared/weather";
 
 @Component({
@@ -11,7 +11,7 @@ import { Weather } from "../shared/weather";
 export class WeatherOverviewComponent implements OnInit {
     weather: Weather;
 
-    constructor(private weatherService: ForecastWeatherService) { }
+    constructor(private weatherService: LocationWeatherService) { }
 
     ngOnInit() {
         this.weatherService.getWeather().then((weather) => {

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 
-import { LocationWeather } from "../shared/weather";
-import { ForecastWeatherService } from "../shared/forecast-weather-service";
+import { Location } from "../shared/location";
+import { LocationWeather } from "../shared/location-weather";
+import { LocationWeatherService } from "../shared/forecast-weather-service";
+import { LocationsService } from "../shared/locations-service";
 
 @Component({
     selector: 'sw-location-weather',
@@ -11,14 +13,19 @@ import { ForecastWeatherService } from "../shared/forecast-weather-service";
 })
 export class LocationWeatherComponent implements OnInit {
     weather: LocationWeather;
+    location: Location;
 
-    constructor(private route: ActivatedRoute, private weatherService: ForecastWeatherService) { }
+    constructor(private route: ActivatedRoute, private weatherService: LocationWeatherService, private locationsService: LocationsService) { }
 
     ngOnInit() {
         this.route.params.subscribe((params) => {
             this.weather = null;
-            this.weatherService.getWeatherForLocation(params.id).then((weather) => {
-                this.weather =  weather;
+            this.location = null;
+            this.locationsService.getLocationById(params.id).then((location) => {
+                this.location = location;
+                this.weatherService.getWeatherForLocation(location).then((weather) => {
+                    this.weather =  weather;
+                });
             });
         });
     }

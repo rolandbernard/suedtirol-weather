@@ -25,7 +25,7 @@ import { StationSummaryComponent } from "./station-summary/station-summary.compo
 import { ForecastComponent } from "./forecast/forecast.component";
 import { StationWeatherService } from "./shared/station-weather-service";
 import { LocationsService } from "./shared/locations-service";
-import { ForecastWeatherService } from "./shared/forecast-weather-service";
+import { LocationWeatherService } from "./shared/forecast-weather-service";
 import { LocationSearchComponent } from './location-search/location-search.component';
 import { LocationWeatherComponent } from './location-weather/location-weather.component';
 import { AboutComponent } from './about/about.component';
@@ -63,7 +63,7 @@ import { AboutComponent } from './about/about.component';
     providers: [ 
         StationWeatherService,
         LocationsService,
-        ForecastWeatherService,
+        LocationWeatherService,
     ],
     bootstrap: [ AppComponent ]
 })
