@@ -15,7 +15,7 @@ h1 {
 }
 
 #background {
-    filter: blur(10px);
+    filter: blur(10px) brightness(0.7) saturate(0.7);
     position: absolute;
     top: -10%;
     left: -10%;
