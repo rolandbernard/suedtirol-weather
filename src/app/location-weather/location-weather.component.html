@@ -1,4 +1,4 @@
-<div id="root" fxLayout="column">
+<div id="root" fxLayout="column" *ngIf="weather">
     <div fxFlex>
         <div id="background" [style.backgroundImage]="'url(/assets/district' + weather?.districtId + '.jpg)'" *ngIf="weather?.districtId"></div>
         <div id="today">

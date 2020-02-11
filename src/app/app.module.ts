@@ -28,7 +28,6 @@ import { LocationsService } from "./shared/locations-service";
 import { LocationWeatherService } from "./shared/forecast-weather-service";
 import { LocationSearchComponent } from './location-search/location-search.component';
 import { LocationWeatherComponent } from './location-weather/location-weather.component';
-import { AboutComponent } from './about/about.component';
 
 @NgModule({
     declarations: [
@@ -40,7 +39,6 @@ import { AboutComponent } from './about/about.component';
         ForecastComponent,
         LocationSearchComponent,
         LocationWeatherComponent,
-        AboutComponent,
     ],
     imports: [
         BrowserModule,

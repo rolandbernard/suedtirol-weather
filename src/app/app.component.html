@@ -9,7 +9,6 @@
         <div fxLayout="row" fxShow="false" fxShow.gt-sm>
             <button mat-button routerLink="/overview">Overview</button>
             <button mat-button routerLink="/stations">Stations</button>
-            <button mat-button routerLink="/about">About</button>
         </div>
         <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
             <mat-icon>menu</mat-icon>
@@ -18,7 +17,6 @@
         <mat-menu x-position="before" #menu="matMenu">
             <button mat-menu-item routerLink="/overview">Overview</button>
             <button mat-menu-item routerLink="/stations">Stations</button>
-            <button mat-menu-item routerLink="/about">About</button>
         </mat-menu>
 
         <span class="spacer"></span>
