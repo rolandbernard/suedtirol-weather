@@ -9,6 +9,7 @@ import { Style, Icon } from "ol/style";
 
 import { StationWeatherService } from "../shared/station-weather-service";
 import { Station } from "../shared/station";
+import {map} from 'rxjs/operators';
 
 const styles = {
     "station": new Style({
