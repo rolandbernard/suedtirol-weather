@@ -13,6 +13,10 @@ export class WeatherOverviewComponent implements OnInit {
 
     constructor(private weatherService: LocationWeatherService) { }
 
+    getBaseUrl() {
+        return document.getElementsByTagName('base')[0].href;
+    }
+
     ngOnInit() {
         this.weatherService.getWeather().then((weather) => {
             this.weather = weather;

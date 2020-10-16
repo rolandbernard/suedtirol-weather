@@ -1,8 +1,8 @@
 <div id="root" fxLayout="column">
     <div fxFlex>
-        <div id="background"></div>
+        <div id="background" [style.backgroundImage]="'url(' + getBaseUrl() +  '/assets/district7.jpg)'" ></div>
         <div class="imgwrap">
-            <img src="/assets/suedtirol.svg">
+            <img [src]="getBaseUrl() + '/assets/suedtirol.svg'">
             <div id="bolzano" class="forecast">
                 <sw-forecast [forecast]="weather?.bolzano"></sw-forecast>
             </div>

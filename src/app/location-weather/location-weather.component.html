@@ -1,6 +1,6 @@
 <div id="root" fxLayout="column" *ngIf="weather">
     <div fxFlex>
-        <div id="background" [style.backgroundImage]="'url(/assets/district' + weather?.districtId + '.jpg)'" *ngIf="weather?.districtId"></div>
+        <div id="background" [style.backgroundImage]="'url(' + getBaseUrl() +  '/assets/district' + weather?.districtId + '.jpg)'" *ngIf="weather?.districtId"></div>
         <div id="today">
             <h1 ngClass.lt-sm="sm" ngClass.gt-md="lg">{{ location?.name }}</h1>
             <span id="temp" *ngIf="weather?.currentTemperature != null">{{ weather?.currentTemperature }} °C</span>

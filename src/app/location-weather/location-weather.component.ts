@@ -17,6 +17,10 @@ export class LocationWeatherComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, private weatherService: LocationWeatherService, private locationsService: LocationsService) { }
 
+    getBaseUrl() {
+        return document.getElementsByTagName('base')[0].href;
+    }
+    
     ngOnInit() {
         this.route.params.subscribe((params) => {
             this.weather = null;

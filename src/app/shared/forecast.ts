@@ -12,6 +12,10 @@ export enum WeatherCode {
     Storm,
 }
 
+function getBaseUrl() {
+    return document.getElementsByTagName('base')[0].href;
+}
+
 export function toImageURL(code: WeatherCode): string {
     const mapping = [
         [ WeatherCode.Sunny,  "/assets/sunny.svg" ],
@@ -27,7 +31,7 @@ export function toImageURL(code: WeatherCode): string {
     ];
     const entry: string[] = mapping.find((opt) => opt[0] === code) as string[];
     if (entry) {
-        return entry[1];
+        return getBaseUrl() + entry[1];
     } else {
         return null;
     }

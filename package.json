@@ -1,6 +1,7 @@
 {
   "name": "suedtirol-weather",
   "version": "0.0.0",
+  "homepage": "https://rolandbernard.github.io/suedtirol-weather/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
