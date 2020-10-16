@@ -37,6 +37,6 @@ export class StationWeatherService {
     }
 
     getMeasurmentsValuesForStation(station: Station, measurment: Measurement, period: number): Promise<Value[]> {
-        return this.http.get<Value[]>(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-records?station=${ station.id }&name=${ measurment.id }&seconds=${ period }`).toPromise();
+        return this.http.get<Value[]>(`https://ipchannels.integreen-life.bz.it/meteorology/rest/get-records?station=${ station.id }&name=${ measurment.id }&seconds=${ period }`).toPromise();
     }
 }
