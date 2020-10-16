@@ -1726,7 +1726,7 @@ let StationWeatherService = class StationWeatherService {
         });
     }
     getMeasurmentsValuesForStation(station, measurment, period) {
-        return this.http.get(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-records?station=${station.id}&name=${measurment.id}&seconds=${period}`).toPromise();
+        return this.http.get(`https://ipchannels.integreen-life.bz.it/meteorology/rest/get-records?station=${station.id}&name=${measurment.id}&seconds=${period}`).toPromise();
     }
 };
 StationWeatherService.ctorParameters = () => [

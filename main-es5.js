@@ -2995,7 +2995,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getMeasurmentsValuesForStation",
         value: function getMeasurmentsValuesForStation(station, measurment, period) {
-          return this.http.get("http://ipchannels.integreen-life.bz.it/meteorology/rest/get-records?station=".concat(station.id, "&name=").concat(measurment.id, "&seconds=").concat(period)).toPromise();
+          return this.http.get("https://ipchannels.integreen-life.bz.it/meteorology/rest/get-records?station=".concat(station.id, "&name=").concat(measurment.id, "&seconds=").concat(period)).toPromise();
         }
       }]);
 
