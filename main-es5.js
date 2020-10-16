@@ -2752,7 +2752,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 switch (_context6.prev = _context6.next) {
                   case 0:
                     _context6.next = 2;
-                    return this.http.get("http://tourism.opendatahub.bz.it/api/Municipality?elements=0&visibleinsearch=false&latitude=".concat(lat, "&longitude=").concat(long, "&radius=5000")).toPromise();
+                    return this.http.get("https://tourism.opendatahub.bz.it/api/Municipality?elements=0&visibleinsearch=false&latitude=".concat(lat, "&longitude=").concat(long, "&radius=5000")).toPromise();
 
                   case 2:
                     locations = _context6.sent;
@@ -2890,7 +2890,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(StationWeatherService, [{
         key: "getAllStations",
         value: function getAllStations() {
-          return this.http.get("http://ipchannels.integreen-life.bz.it/meteorology/rest/get-station-details").toPromise();
+          return this.http.get("https://ipchannels.integreen-life.bz.it/meteorology/rest/get-station-details").toPromise();
         }
       }, {
         key: "getStationById",
@@ -2939,7 +2939,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
 
                     _context9.next = 3;
-                    return this.http.get("http://ipchannels.integreen-life.bz.it/meteorology/rest/get-data-types?station=".concat(station.id)).toPromise();
+                    return this.http.get("https://ipchannels.integreen-life.bz.it/meteorology/rest/get-data-types?station=".concat(station.id)).toPromise();
 
                   case 3:
                     dataTypes = _context9.sent;
@@ -2958,7 +2958,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                                 measurment.unit = dataType[1];
                                 measurment.name = dataType[2] || dataType[0];
                                 _context8.next = 6;
-                                return this.http.get("http://ipchannels.integreen-life.bz.it/meteorology/rest/get-newest-record?station=".concat(station.id, "&type=").concat(dataType[0])).toPromise();
+                                return this.http.get("https://ipchannels.integreen-life.bz.it/meteorology/rest/get-newest-record?station=".concat(station.id, "&type=").concat(dataType[0])).toPromise();
 
                               case 6:
                                 value = _context8.sent;

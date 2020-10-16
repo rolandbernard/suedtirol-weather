@@ -1632,7 +1632,7 @@ let LocationsService = class LocationsService {
     }
     getLocationIdsByCord(lat, long) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            const locations = yield this.http.get(`http://tourism.opendatahub.bz.it/api/Municipality?elements=0&visibleinsearch=false&latitude=${lat}&longitude=${long}&radius=5000`).toPromise();
+            const locations = yield this.http.get(`https://tourism.opendatahub.bz.it/api/Municipality?elements=0&visibleinsearch=false&latitude=${lat}&longitude=${long}&radius=5000`).toPromise();
             return locations.map((location) => ["mun" + location.Id, (lat - location.Latitude) * (lat - location.Latitude) + (long - location.Longitude) * (long - location.Longitude)]);
         });
     }
@@ -1697,7 +1697,7 @@ let StationWeatherService = class StationWeatherService {
         this.http = http;
     }
     getAllStations() {
-        return this.http.get("http://ipchannels.integreen-life.bz.it/meteorology/rest/get-station-details").toPromise();
+        return this.http.get("https://ipchannels.integreen-life.bz.it/meteorology/rest/get-station-details").toPromise();
     }
     getStationById(id) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -1707,13 +1707,13 @@ let StationWeatherService = class StationWeatherService {
     getMeasurmentsForStation(station) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             if (station) {
-                const dataTypes = yield this.http.get(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-data-types?station=${station.id}`).toPromise();
+                const dataTypes = yield this.http.get(`https://ipchannels.integreen-life.bz.it/meteorology/rest/get-data-types?station=${station.id}`).toPromise();
                 return yield Promise.all(dataTypes.map((dataType) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
                     let measurment = new _measurement__WEBPACK_IMPORTED_MODULE_3__["Measurement"]();
                     measurment.id = dataType[0];
                     measurment.unit = dataType[1];
                     measurment.name = dataType[2] || dataType[0];
-                    const value = yield this.http.get(`http://ipchannels.integreen-life.bz.it/meteorology/rest/get-newest-record?station=${station.id}&type=${dataType[0]}`).toPromise();
+                    const value = yield this.http.get(`https://ipchannels.integreen-life.bz.it/meteorology/rest/get-newest-record?station=${station.id}&type=${dataType[0]}`).toPromise();
                     if (value !== null) {
                         measurment.value = value.value;
                     }
