@@ -131,7 +131,7 @@ export class LocationsService {
     }
 
     async getLocationIdsByCord(lat: number, long: number): Promise<[string, number][]> {
-        const locations: any[] = await this.http.get<any[]>(`http://tourism.opendatahub.bz.it/api/Municipality?elements=0&visibleinsearch=false&latitude=${lat}&longitude=${long}&radius=5000`).toPromise();
+        const locations: any[] = await this.http.get<any[]>(`https://tourism.opendatahub.bz.it/api/Municipality?elements=0&visibleinsearch=false&latitude=${lat}&longitude=${long}&radius=5000`).toPromise();
             return locations.map((location) => ["mun" + location.Id, (lat-location.Latitude)*(lat-location.Latitude) + (long-location.Longitude)*(long-location.Longitude)]);
     }
 
